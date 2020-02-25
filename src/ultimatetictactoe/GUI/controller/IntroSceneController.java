@@ -5,8 +5,10 @@
  */
 package ultimatetictactoe.GUI.controller;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -15,6 +17,13 @@ import javafx.fxml.Initializable;
  * @author Martin Park Broderse
  */
 public class IntroSceneController implements Initializable {
+
+    @FXML
+    private JFXButton HumanVSHumanButton;
+    @FXML
+    private JFXButton HumanVSBotButton;
+    @FXML
+    private JFXButton BotVSBotButton;
 
     /**
      * Initializes the controller class.
