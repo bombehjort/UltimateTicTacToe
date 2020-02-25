@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25 Feb 2020, 11:43:30
+    Author     : mac
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Lacquer&display=swap');
+
+
+#AnchorPane{
+    -fx-background-color: #F5D5ED;
+}
+#MainLabel{
+    
+    -fx-font-family: 'Lacquer';
+    -fx-font-size: 25px;
+}
+
+#maingrid{
+    
+    -fx-border-color: white;
+    -fx-border-width: 5px;
+}
+
+#inGrid{
+   -fx-border-color: white;
+   -fx-border-width: 2px; 
+  -fx-border-style: solid inside; 
+  -fx-border-insets: 3;
+  -fx-effect: dropshadow(three-pass-box,rgba(10,0,0,0.8),10,0,0,0);
+}
+
+#inGridbutton{
+    
+    -fx-border-color: white;
+    
+    
+}
+
