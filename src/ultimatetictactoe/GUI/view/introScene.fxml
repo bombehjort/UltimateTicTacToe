@@ -12,17 +12,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="HumanVSHuman" layoutX="233.0" layoutY="134.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Human" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="HumanVSHumanButton" layoutX="233.0" layoutY="134.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Human" AnchorPane.leftAnchor="233.0">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="HumanVSAI" layoutX="233.0" layoutY="223.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Skynet" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="HumanVSBotButton" layoutX="233.0" layoutY="223.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Skynet" AnchorPane.leftAnchor="233.0">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="aiVSaiButton" layoutX="233.0" layoutY="308.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Skynet VS Skynet" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="BotVSBotButton" layoutX="233.0" layoutY="308.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Skynet VS Skynet" AnchorPane.leftAnchor="233.0">
          <font>
             <Font size="14.0" />
          </font>
