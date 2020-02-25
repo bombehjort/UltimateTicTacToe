@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.IntroSceneController">
-    
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.IntroSceneController">
+   <children>
+      <Label layoutX="184.0" layoutY="22.0" text="ULTIMATE TIC TAC TOE" AnchorPane.topAnchor="22.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="HumanVSHuman" layoutX="233.0" layoutY="134.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Human" AnchorPane.leftAnchor="233.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="HumanVSAI" layoutX="233.0" layoutY="223.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Skynet" AnchorPane.leftAnchor="233.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="aiVSaiButton" layoutX="233.0" layoutY="308.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Skynet VS Skynet" AnchorPane.leftAnchor="233.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="552.0" layoutY="14.0" style="-fx-background-color: white;" text="X" textFill="#d14f3bf6" AnchorPane.rightAnchor="13.333333333333336" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
 </AnchorPane>
