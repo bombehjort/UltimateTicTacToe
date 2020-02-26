@@ -5,13 +5,16 @@
  */
 package ultimatetictactoe.GUI.controller;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import ultimatetictactoe.GUI.UTTTButton;
 import ultimatetictactoe.game.GameManager;
 import ultimatetictactoe.game.GameState;
@@ -30,6 +33,8 @@ public class MainController implements Initializable {
    IGameState gameState;
     @FXML
     private AnchorPane MainPane;
+    @FXML
+    private JFXButton closeBtn;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gameState = new GameState();
@@ -69,6 +74,13 @@ public class MainController implements Initializable {
  
         }   
        
+    }
+
+    @FXML
+    private void clickClose(ActionEvent event) {
+         Stage stage = (Stage) closeBtn.getScene().getWindow();
+        stage.close();
+        
     }
     
 }    

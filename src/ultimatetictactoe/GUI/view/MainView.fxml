@@ -24,7 +24,7 @@
             <Image url="@../../../../../FindYourFavs/FindYourFavs/src/icons/Search-512.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="680.0" layoutY="8.0" text="Close" />
+      <JFXButton fx:id="closeBtn" buttonType="RAISED" layoutX="680.0" layoutY="8.0" onAction="#clickClose" text="Close" />
       <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="8.0" text="Refresh Game" />
    </children>
 </AnchorPane>
