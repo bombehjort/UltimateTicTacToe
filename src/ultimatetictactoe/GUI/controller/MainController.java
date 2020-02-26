@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import ultimatetictactoe.GUI.UTTTButton;
 import ultimatetictactoe.game.GameManager;
@@ -23,6 +25,7 @@ import ultimatetictactoe.move.Move;
  */
 public class MainController implements Initializable {
 
+
    private GameManager gm;
    IGameState gameState;
     @FXML
@@ -34,28 +37,32 @@ public class MainController implements Initializable {
         createAllCells();
       }
     private void createAllCells(){
-        int btnWidth = 60;
-        int btnHeight = 60;
+        int btnWidth = 65;
+        int btnHeight = 65;
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
                 
         UTTTButton btn = new UTTTButton();
         btn.setPrefSize(btnWidth, btnHeight);
-        btn.setLayoutX(8+(btnWidth+3)*x);
-        btn.setLayoutY(7+(btnHeight+3)*y);
+        btn.setLayoutX(6+(btnWidth+3)*x);
+        btn.setLayoutY(6+(btnHeight+3)*y);
         btn.setMove(new Move(x,y));
-        btn.setOnMouseClicked(event->{
-      UTTTButton b =  (UTTTButton)event.getSource();
-      boolean isSucces = gm.updateGame(b.getMove());
-      if(isSucces){
-        if(gameState.getMoveNumber()%
-                2==0)
-        b.setText("X");
-        else 
-        b.setText("O");
-           }
-      
+        
+        btn.setOnMouseClicked(event-> {
+            UTTTButton b =  (UTTTButton)event.getSource();
+            boolean isSucces = gm.updateGame(b.getMove());
+            String imageSource;
+            if(isSucces){
+                if(gameState.getMoveNumber()%2==0) {
+                    imageSource = "/icons/player1icon.png";
+                }
+                else{
+                    imageSource = "/icons/player2icon.png";
+                }
+                b.setGraphic(new ImageView(new Image(imageSource)));
+            }
         });
+                
         MainPane.getChildren().add(btn);
                 
             }
