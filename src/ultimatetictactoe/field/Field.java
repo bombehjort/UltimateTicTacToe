@@ -5,8 +5,10 @@
  */
 package ultimatetictactoe.field;
 
+import java.util.ArrayList;
 import java.util.List;
 import ultimatetictactoe.move.IMove;
+import ultimatetictactoe.move.Move;
 
 /**
  *
@@ -20,11 +22,23 @@ public class Field implements IField {
     public Field() {
         macroBoard = new String[3][3];
         board = new String[9][9];
+        clearBoard();
 
+    }
+
+    @Override
+    public void clearBoard() {
         for (int x = 0; x < macroBoard.length; x++) {
 
             for (int y = 0; y < macroBoard[x].length; y++) {
-                macroBoard[x][y] = "-1";
+                macroBoard[x][y] = AVAILABLE_FIELD;
+
+            }
+        }
+        for (int x = 0; x < board.length; x++) {
+
+            for (int y = 0; y < board[x].length; y++) {
+                board[x][y] = EMPTY_FIELD;
 
             }
         }
@@ -32,53 +46,86 @@ public class Field implements IField {
     }
 
     @Override
-    public void clearBoard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<IMove> getAvailableMoves() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<IMove> moveList = new ArrayList<>();
+        for (int x = 0; x < board.length; x++) {
+
+            for (int y = 0; y < board[x].length; y++) {
+                boolean isEmpty = board[x][y] == EMPTY_FIELD;
+                if (isEmpty && isInActiveMicroboard(x, y)) {
+                    moveList.add(new Move(x, y));
+
+                }
+
+            }
+        }
+
+        return moveList;
+
     }
+    // if(!isInActiveMicroboard(0, 0))
 
     @Override
     public String getPlayerId(int column, int row) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return board[column][row];
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int x = 0; x < macroBoard.length; x++) {
+
+            for (int y = 0; y < macroBoard[x].length; y++) {
+                if (!board[x][y].equals(EMPTY_FIELD)) {
+                    return false;
+                }
+
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean isFull() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int x = 0; x < macroBoard.length; x++) {
+
+            for (int y = 0; y < macroBoard[x].length; y++) {
+                if (board[x][y].equals(EMPTY_FIELD)) {
+                    return false;
+                }
+
+            }
+        }
+        return true;
     }
 
     @Override
     public Boolean isInActiveMicroboard(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        int macroX = x / 3;
+        int macroY = y / 3;
+
+        return macroBoard[macroX][macroY].equals(AVAILABLE_FIELD);
+
     }
 
     @Override
     public String[][] getBoard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return board;
     }
 
     @Override
     public String[][] getMacroboard() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return macroBoard;
     }
 
     @Override
     public void setBoard(String[][] board) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.board = board;
     }
 
     @Override
     public void setMacroboard(String[][] macroboard) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.macroBoard = macroboard;
     }
 
 }
