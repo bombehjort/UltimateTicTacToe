@@ -19,7 +19,7 @@ public class UltimateTicTacToe extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/ultimatetictactoe/GUI/view/introScene.fxml"));
         
         Scene scene = new Scene(root);
         

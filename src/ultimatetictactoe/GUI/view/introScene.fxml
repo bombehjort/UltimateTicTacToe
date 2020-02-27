@@ -12,22 +12,22 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="HumanVSHumanButton" layoutX="233.0" layoutY="134.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Human" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="HumanVSHumanButton" buttonType="RAISED" layoutX="233.0" layoutY="134.0" onAction="#clickHumanVSHuman" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Human VS Human" AnchorPane.leftAnchor="233.0">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="HumanVSBotButton" layoutX="233.0" layoutY="223.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Human VS Skynet" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="HumanVSBotButton" buttonType="RAISED" layoutX="233.0" layoutY="223.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Human VS Skynet" AnchorPane.leftAnchor="233.0">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="BotVSBotButton" layoutX="233.0" layoutY="308.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: orange;" text="Skynet VS Skynet" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="BotVSBotButton" buttonType="RAISED" layoutX="233.0" layoutY="308.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Skynet VS Skynet" AnchorPane.leftAnchor="233.0">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="552.0" layoutY="14.0" style="-fx-background-color: white;" text="X" textFill="#d14f3bf6" AnchorPane.rightAnchor="13.333333333333336" AnchorPane.topAnchor="14.0">
+      <JFXButton layoutX="552.0" layoutY="14.0" onAction="#clickCloseIntro" style="-fx-background-color: white;" text="X" textFill="#d14f3bf6" AnchorPane.rightAnchor="13.333333333333336" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="18.0" />
          </font>
