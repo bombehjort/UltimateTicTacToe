@@ -144,7 +144,7 @@ public class GameManager {
         int macroY = move.getY() % 3;
         String[][] macroBoard = currentState.getField().getMacroboard();
 
-     //Checks if already won, if already won all macrocells availavble for play   
+     //Checks if already won, if already won all macrocells available for play   
         
         
         if (currentState.getField().getMacroboard()[macroX][macroY] != IField.AVAILABLE_FIELD

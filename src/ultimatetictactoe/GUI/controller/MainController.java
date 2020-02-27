@@ -57,10 +57,11 @@ public class MainController implements Initializable {
                 btn.setPrefSize(btnWidth, btnHeight); 
                 btn.setMove(new Move(x, y));
                 
-                int verticalSpaceBetween = 5 * (x/3);
-                int horizontalSpaceBetween = 5 * (y/3);
-                btn.setLayoutX(6 + (btnWidth + 3) * x + verticalSpaceBetween);
-                btn.setLayoutY(6 + (btnHeight + 3) * y + horizontalSpaceBetween);
+                int verticalSpaceBetween = 10 * (x/3);
+                int horizontalSpaceBetween = 10 * (y/3);
+                btn.setLayoutX(6 + (btnWidth + 2) * x + verticalSpaceBetween);
+                btn.setLayoutY(6 + (btnHeight + 2) * y + horizontalSpaceBetween);
+                
 
                 btn.setOnMouseClicked(event -> {
                     UTTTButton b = (UTTTButton) event.getSource();
