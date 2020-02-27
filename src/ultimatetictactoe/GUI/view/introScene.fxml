@@ -7,7 +7,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.IntroSceneController">
    <children>
-      <Label layoutX="184.0" layoutY="22.0" text="ULTIMATE TIC TAC TOE" AnchorPane.topAnchor="22.0">
+      <Label id="IntroLabel" layoutX="184.0" layoutY="22.0" stylesheets="@IntroCSS.css" text="uLTIMATE TIC TAC TOE" AnchorPane.topAnchor="22.0">
          <font>
             <Font size="24.0" />
          </font>
