@@ -10,22 +10,22 @@
 
 <AnchorPane id="AnchorPane" prefHeight="301.0" prefWidth="558.0" style="-fx-background-color: #F5D5ED#F5D5ED; -fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.CongratsController">
    <children>
-      <Label layoutX="177.0" layoutY="32.0" prefHeight="40.0" prefWidth="255.0" text="Congradulations !!! ">
+      <Label id="CongratulationsLabel" layoutX="156.0" layoutY="24.0" prefHeight="48.0" prefWidth="353.0" stylesheets="@CongratsCSS.css" text="Congradulations !!! ">
          <font>
             <Font name="Monaco" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="winnerlabel" layoutX="228.0" layoutY="108.0" prefHeight="22.0" prefWidth="71.0" text="Player 1 ">
+      <Label id="playernamelbl" fx:id="winnerlabel" layoutX="210.0" layoutY="112.0" prefHeight="30.0" prefWidth="89.0" stylesheets="@CongratsCSS.css" text="Player 1 ">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="325.0" layoutY="108.0" text="Won!">
+      <Label id="wonlbl" layoutX="325.0" layoutY="112.0" stylesheets="@CongratsCSS.css" text="Won!">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="217.0" layoutY="171.0" text="You are amazing ">
+      <Label id="amazingLabel" layoutX="201.0" layoutY="171.0" stylesheets="@CongratsCSS.css" text="You are amazing ">
          <font>
             <Font name="Monaco" size="17.0" />
          </font>

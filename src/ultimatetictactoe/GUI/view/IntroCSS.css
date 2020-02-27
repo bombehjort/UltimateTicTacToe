@@ -8,12 +8,12 @@ and open the template in the editor.
     Author     : mac
 */
 
-@import url('https://fonts.googleapis.com/css?family=Lacquer&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Trade+Winds&display=swap');
 
 
 #IntroLabel{
     
-     -fx-font-family: 'Lacquer';
+     -fx-font-family: 'Trade Winds';
      -fx-font-size: 25px;
     
 }

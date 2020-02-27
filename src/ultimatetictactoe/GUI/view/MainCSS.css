@@ -9,14 +9,14 @@ and open the template in the editor.
 */
 
 @import url('https://fonts.googleapis.com/css?family=Lacquer&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Trade+Winds&display=swap');
 
 #AnchorPane{
     -fx-background-color: #F5D5ED;
 }
 #MainLabel{
     
-    -fx-font-family: 'Lacquer';
+    -fx-font-family: 'Trade Winds';
     -fx-font-size: 25px;
 }
 
