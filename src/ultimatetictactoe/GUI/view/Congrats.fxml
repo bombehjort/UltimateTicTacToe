@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="301.0" prefWidth="558.0" style="-fx-background-color: #F5D5ED#F5D5ED; -fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.CongratsController">
+   <children>
+      <Label layoutX="177.0" layoutY="32.0" prefHeight="40.0" prefWidth="255.0" text="Congradulations !!! ">
+         <font>
+            <Font name="Monaco" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="winnerlabel" layoutX="228.0" layoutY="108.0" prefHeight="22.0" prefWidth="71.0" text="Player 1 ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="325.0" layoutY="108.0" text="Won!">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="217.0" layoutY="171.0" text="You are amazing ">
+         <font>
+            <Font name="Monaco" size="17.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="newgamebtn" buttonType="RAISED" layoutX="420.0" layoutY="242.0" onAction="#clickNewGame" onMouseReleased="#clickclosenewbtn" ripplerFill="#f0f0f0e8" style="-fx-border-color: white; -fx-border-width: 2;" text="New Game" />
+      <JFXButton buttonType="RAISED" layoutX="83.0" layoutY="242.0" onAction="#clickPlayAgain" ripplerFill="#f0f0f0e8" style="-fx-border-color: white; -fx-border-width: 2;" text="Play Again" />
+      <JFXButton layoutX="538.0" layoutY="14.0" onAction="#clickCloseWinner" prefHeight="35.0" prefWidth="37.0" ripplerFill="#f0f0f0" style="-fx-background-color: white;" text="X" textFill="#d14f3b">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </JFXButton>
+      <ImageView fitHeight="105.0" fitWidth="134.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../icons/winnericon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
