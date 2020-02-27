@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.IntroSceneController">
    <children>
-      <Label id="IntroLabel" layoutX="184.0" layoutY="22.0" stylesheets="@IntroCSS.css" text="ULTIMATE TIC TAC TOE" AnchorPane.topAnchor="22.0">
+      <Label id="IntroLabel" layoutX="155.0" layoutY="21.0" stylesheets="@IntroCSS.css" text="ULTIMATE TIC TAC TOE" AnchorPane.topAnchor="21.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="HumanVSHumanButton" buttonType="RAISED" layoutX="233.0" layoutY="134.0" onAction="#clickHumanVSHuman" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Human VS Human" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="HumanVSHumanButton" buttonType="RAISED" layoutX="46.0" layoutY="173.0" onAction="#clickHumanVSHuman" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Human VS Human" AnchorPane.leftAnchor="46.0">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="HumanVSBotButton" buttonType="RAISED" layoutX="233.0" layoutY="223.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Human VS Skynet" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="HumanVSBotButton" buttonType="RAISED" layoutX="226.0" layoutY="173.0" onAction="#clickHvB" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Human VS Skynet" AnchorPane.leftAnchor="226.0">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="BotVSBotButton" buttonType="RAISED" layoutX="233.0" layoutY="308.0" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Skynet VS Skynet" AnchorPane.leftAnchor="233.0">
+      <JFXButton fx:id="BotVSBotButton" buttonType="RAISED" layoutX="412.0" layoutY="173.0" onAction="#clickBvB" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #77FF96#77FF96;" text="Skynet VS Skynet" AnchorPane.leftAnchor="412.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -32,5 +36,45 @@
             <Font size="18.0" />
          </font>
       </JFXButton>
+      <Label id="hey" layoutX="168.0" layoutY="93.0" stylesheets="@IntroCSS.css" text="Hey You, Please choose  game mode: " />
+      <Pane fx:id="HvHPane" layoutX="49.0" layoutY="262.0" prefHeight="206.0" prefWidth="509.0" style="-fx-border-color: white; -fx-border-width: 5;" visible="false">
+         <children>
+            <Label layoutX="43.0" layoutY="113.0" text="Player 2: " />
+            <Label layoutX="44.0" layoutY="42.0" text="Player 1: " />
+            <JFXTextField focusColor="BLACK" layoutX="154.0" layoutY="37.0" promptText="Choose Username" style="-fx-border-color: black; -fx-border-width: 2;" />
+            <JFXTextField focusColor="BLACK" layoutX="154.0" layoutY="108.0" promptText="Choose Username" style="-fx-border-width: 2; -fx-border-color: black;" unFocusColor="BLACK" />
+            <JFXButton fx:id="confirmbtn" buttonType="RAISED" layoutX="406.0" layoutY="152.0" onAction="#clickConfirm" ripplerFill="WHITE" style="-fx-border-color: black; -fx-border-width: 3;" text="Confirm" />
+         </children>
+      </Pane>
+      <Pane fx:id="HvBPane" layoutX="49.0" layoutY="262.0" prefHeight="206.0" prefWidth="509.0" style="-fx-border-color: white; -fx-border-width: 5;" visible="false">
+         <children>
+            <Label layoutX="43.0" layoutY="113.0" text="Bot: " />
+            <Label layoutX="44.0" layoutY="42.0" text="Player : " />
+            <JFXTextField focusColor="BLACK" layoutX="154.0" layoutY="37.0" promptText="Choose Username" style="-fx-border-color: black; -fx-border-width: 2;" />
+            <JFXButton fx:id="confirmbtnHvB" buttonType="RAISED" layoutX="406.0" layoutY="152.0" onAction="#clickConfirmHvB" ripplerFill="WHITE" style="-fx-border-color: black; -fx-border-width: 3;" text="Confirm" />
+            <ImageView fitHeight="97.0" fitWidth="131.0" layoutX="175.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/hibot.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="BvBPane" layoutX="49.0" layoutY="262.0" prefHeight="206.0" prefWidth="509.0" style="-fx-border-color: white; -fx-border-width: 5;" visible="false">
+         <children>
+            <Label layoutX="45.0" layoutY="130.0" text="Chili Bot:" />
+            <Label layoutX="43.0" layoutY="51.0" text="Greg Bot:" />
+            <JFXButton fx:id="confirmbtnbvb" buttonType="RAISED" layoutX="406.0" layoutY="152.0" onAction="#clickConfirmBvB" ripplerFill="WHITE" style="-fx-border-color: black; -fx-border-width: 3;" text="Confirm" />
+            <ImageView fitHeight="87.0" fitWidth="120.0" layoutX="191.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/minionbot.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="87.0" fitWidth="120.0" layoutX="191.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/alienbot.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

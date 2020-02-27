@@ -17,3 +17,10 @@ and open the template in the editor.
      -fx-font-size: 25px;
     
 }
+
+#hey{
+    
+    -fx-font-family: 'Trade Winds';
+    -fx-font-size: 15px;
+    
+}

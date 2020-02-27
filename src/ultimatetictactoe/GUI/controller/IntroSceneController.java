@@ -17,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -32,6 +34,18 @@ public class IntroSceneController implements Initializable {
     private JFXButton HumanVSBotButton;
     @FXML
     private JFXButton BotVSBotButton;
+    @FXML
+    private Pane HvHPane;
+    @FXML
+    private JFXButton confirmbtn;
+    @FXML
+    private Pane HvBPane;
+    @FXML
+    private JFXButton confirmbtnHvB;
+    @FXML
+    private Pane BvBPane;
+    @FXML
+    private JFXButton confirmbtnbvb;
 
     /**
      * Initializes the controller class.
@@ -42,9 +56,37 @@ public class IntroSceneController implements Initializable {
     }    
 
     @FXML
-    private void clickHumanVSHuman(ActionEvent event) throws IOException {
+    private void clickHumanVSHuman(ActionEvent event)  {
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
+        HvHPane.setVisible(true);
+        HvBPane.setVisible(false);
+        BvBPane.setVisible(false);
+        
+    }
+   @FXML
+    private void clickHvB(ActionEvent event) {
+        HvBPane.setVisible(true);
+        HvHPane.setVisible(false);
+        BvBPane.setVisible(false);
+    }
+
+    @FXML
+    private void clickBvB(ActionEvent event) {
+        BvBPane.setVisible(true);
+        HvHPane.setVisible(false);
+        HvBPane.setVisible(false);
+    }
+    @FXML
+    private void clickCloseIntro(ActionEvent event) {
+        
+        Stage stage = (Stage) ((Node) ((EventObject) event).getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void clickConfirm(ActionEvent event) throws IOException {
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
             Parent root = loader.load();
              MainController mctrl = loader.getController();
 
@@ -52,15 +94,37 @@ public class IntroSceneController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+    }
 
+    @FXML
+    private void clickConfirmHvB(ActionEvent event) throws IOException {
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
+            Parent root = loader.load();
+             MainController mctrl = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
         
     }
 
     @FXML
-    private void clickCloseIntro(ActionEvent event) {
+    private void clickConfirmBvB(ActionEvent event) throws IOException {
         
-        Stage stage = (Stage) ((Node) ((EventObject) event).getSource()).getScene().getWindow();
-        stage.close();
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
+            Parent root = loader.load();
+             MainController mctrl = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
     }
+
+   
+ 
     
 }
