@@ -5,9 +5,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="723.0" prefWidth="750.0" stylesheets="@MainCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.MainController">
+<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="750.0" stylesheets="@MainCSS.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.MainController">
    <children>
       <AnchorPane id="maingrid" fx:id="MainPane" layoutX="76.0" layoutY="85.0" prefHeight="551.0" prefWidth="581.0" stylesheets="@MainCSS.css" />
       <Label id="MainLabel" layoutX="253.0" layoutY="23.0" prefHeight="31.0" prefWidth="270.0" stylesheets="@MainCSS.css" text="ultimate Tic Tac Toe  ">
@@ -16,15 +17,25 @@
          </font></Label>
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="175.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../FindYourFavs/FindYourFavs/src/icons/add.png" />
+            <Image url="@../../../icons/player1icon.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="543.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../FindYourFavs/FindYourFavs/src/icons/Search-512.png" />
+            <Image url="@../../../icons/player2icon.png" />
          </image>
       </ImageView>
       <JFXButton fx:id="closeBtn" buttonType="RAISED" layoutX="680.0" layoutY="8.0" onAction="#clickClose" text="Close" />
       <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="8.0" text="Refresh Game" />
+      <Pane fx:id="miniPane" layoutX="61.0" layoutY="645.0" prefHeight="94.0" prefWidth="612.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
+         <children>
+            <Label layoutX="60.0" layoutY="14.0" prefHeight="17.0" prefWidth="59.0" text="Name1" />
+            <Label layoutX="472.0" layoutY="14.0" prefHeight="17.0" prefWidth="77.0" text="Name2" />
+            <Label layoutX="288.0" layoutY="14.0" text="VS" />
+            <Label layoutX="295.0" layoutY="47.0" text=":" />
+            <Label layoutX="71.0" layoutY="47.0" text="0" />
+            <Label layoutX="489.0" layoutY="47.0" text="2" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

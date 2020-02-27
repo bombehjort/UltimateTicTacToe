@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ultimatetictactoe.GUI.UTTTButton;
 import ultimatetictactoe.game.GameManager;
@@ -35,6 +36,8 @@ public class MainController implements Initializable {
     private AnchorPane MainPane;
     @FXML
     private JFXButton closeBtn;
+    @FXML
+    private Pane miniPane;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gameState = new GameState();
@@ -44,6 +47,8 @@ public class MainController implements Initializable {
     private void createAllCells(){
         int btnWidth = 65;
         int btnHeight = 65;
+        
+        
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
                 
