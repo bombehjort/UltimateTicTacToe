@@ -6,6 +6,7 @@
 package ultimatetictactoe.GUI.controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.EventObject;
@@ -46,24 +47,31 @@ public class IntroSceneController implements Initializable {
     private Pane BvBPane;
     @FXML
     private JFXButton confirmbtnbvb;
+    @FXML
+    private JFXTextField username1;
+    @FXML
+    private JFXTextField username2;
+    @FXML
+    private JFXTextField usernameHvB;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+
+    }
 
     @FXML
-    private void clickHumanVSHuman(ActionEvent event)  {
-        
+    private void clickHumanVSHuman(ActionEvent event) {
+
         HvHPane.setVisible(true);
         HvBPane.setVisible(false);
         BvBPane.setVisible(false);
-        
+
     }
-   @FXML
+
+    @FXML
     private void clickHvB(ActionEvent event) {
         HvBPane.setVisible(true);
         HvHPane.setVisible(false);
@@ -76,55 +84,56 @@ public class IntroSceneController implements Initializable {
         HvHPane.setVisible(false);
         HvBPane.setVisible(false);
     }
+
     @FXML
     private void clickCloseIntro(ActionEvent event) {
-        
+
         Stage stage = (Stage) ((Node) ((EventObject) event).getSource()).getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void clickConfirm(ActionEvent event) throws IOException {
-        
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
-            Parent root = loader.load();
-             MainController mctrl = loader.getController();
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
+        Parent root = loader.load();
+        MainController mctrl = loader.getController();
+
+        mctrl.setUpUsernames(username1.getText(), username2.getText());
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @FXML
     private void clickConfirmHvB(ActionEvent event) throws IOException {
-        
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
-            Parent root = loader.load();
-             MainController mctrl = loader.getController();
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
+        Parent root = loader.load();
+        MainController mctrl = loader.getController();
+
+        mctrl.setUpUsernames(usernameHvB.getText(), "");
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @FXML
     private void clickConfirmBvB(ActionEvent event) throws IOException {
-        
-        
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
-            Parent root = loader.load();
-             MainController mctrl = loader.getController();
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
+        Parent root = loader.load();
+        MainController mctrl = loader.getController();
+
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 
-   
- 
-    
 }

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,6 +40,10 @@ public class MainController implements Initializable {
     private JFXButton closeBtn;
     @FXML
     private Pane miniPane;
+    @FXML
+    private Label usrplayer1;
+    @FXML
+    private Label usrplayer2;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -54,14 +59,13 @@ public class MainController implements Initializable {
         for (int x = 0; x < 3 + 3 + 3; x++) {
             for (int y = 0; y < 3 + 3 + 3; y++) {
                 UTTTButton btn = new UTTTButton();
-                btn.setPrefSize(btnWidth, btnHeight); 
+                btn.setPrefSize(btnWidth, btnHeight);
                 btn.setMove(new Move(x, y));
-                
-                int verticalSpaceBetween = 10 * (x/3);
-                int horizontalSpaceBetween = 10 * (y/3);
+
+                int verticalSpaceBetween = 10 * (x / 3);
+                int horizontalSpaceBetween = 10 * (y / 3);
                 btn.setLayoutX(6 + (btnWidth + 2) * x + verticalSpaceBetween);
                 btn.setLayoutY(6 + (btnHeight + 2) * y + horizontalSpaceBetween);
-                
 
                 btn.setOnMouseClicked(event -> {
                     UTTTButton b = (UTTTButton) event.getSource();
@@ -89,6 +93,16 @@ public class MainController implements Initializable {
     private void clickClose(ActionEvent event) {
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
+
+    }
+
+    void setUpUsernames(String firstName, String secondName) {
+        if (!firstName.equals("")) {
+            usrplayer1.setText(firstName);
+        }
+        if (!secondName.equals("")) {
+            usrplayer2.setText(secondName);
+        }
 
     }
 

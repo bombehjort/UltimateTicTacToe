@@ -41,8 +41,8 @@
          <children>
             <Label layoutX="43.0" layoutY="113.0" text="Player 2: " />
             <Label layoutX="44.0" layoutY="42.0" text="Player 1: " />
-            <JFXTextField focusColor="BLACK" layoutX="154.0" layoutY="37.0" promptText="Choose Username" style="-fx-border-color: black; -fx-border-width: 2;" />
-            <JFXTextField focusColor="BLACK" layoutX="154.0" layoutY="108.0" promptText="Choose Username" style="-fx-border-width: 2; -fx-border-color: black;" unFocusColor="BLACK" />
+            <JFXTextField fx:id="username1" focusColor="BLACK" layoutX="154.0" layoutY="37.0" promptText="Choose Username" style="-fx-border-color: black; -fx-border-width: 2;" />
+            <JFXTextField fx:id="username2" focusColor="BLACK" layoutX="154.0" layoutY="108.0" promptText="Choose Username" style="-fx-border-width: 2; -fx-border-color: black;" unFocusColor="BLACK" />
             <JFXButton fx:id="confirmbtn" buttonType="RAISED" layoutX="406.0" layoutY="152.0" onAction="#clickConfirm" ripplerFill="WHITE" style="-fx-border-color: black; -fx-border-width: 3;" text="Confirm" />
          </children>
       </Pane>
@@ -50,7 +50,7 @@
          <children>
             <Label layoutX="43.0" layoutY="113.0" text="Bot: " />
             <Label layoutX="44.0" layoutY="42.0" text="Player : " />
-            <JFXTextField focusColor="BLACK" layoutX="154.0" layoutY="37.0" promptText="Choose Username" style="-fx-border-color: black; -fx-border-width: 2;" />
+            <JFXTextField fx:id="usernameHvB" focusColor="BLACK" layoutX="154.0" layoutY="37.0" promptText="Choose Username" style="-fx-border-color: black; -fx-border-width: 2;" />
             <JFXButton fx:id="confirmbtnHvB" buttonType="RAISED" layoutX="406.0" layoutY="152.0" onAction="#clickConfirmHvB" ripplerFill="WHITE" style="-fx-border-color: black; -fx-border-width: 3;" text="Confirm" />
             <ImageView fitHeight="97.0" fitWidth="131.0" layoutX="175.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>

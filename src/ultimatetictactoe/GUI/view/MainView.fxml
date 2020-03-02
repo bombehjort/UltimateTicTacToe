@@ -30,15 +30,26 @@
             <Image url="@../../../icons/player2icon.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="closeBtn" buttonType="RAISED" layoutX="680.0" layoutY="8.0" onAction="#clickClose" text="Close" />
+      <JFXButton fx:id="closeBtn" buttonType="RAISED" layoutX="836.0" layoutY="10.0" onAction="#clickClose" text="Close" />
       <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="8.0" text="Refresh Game" />
-      <Pane fx:id="miniPane" layoutX="747.0" layoutY="85.0" prefHeight="473.0" prefWidth="148.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
+      <Pane fx:id="miniPane" layoutX="747.0" layoutY="85.0" prefHeight="628.0" prefWidth="148.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
          <children>
-            <Label layoutX="45.0" layoutY="53.0" prefHeight="17.0" prefWidth="59.0" text="Player 1" />
-            <Label layoutX="49.0" layoutY="292.0" prefHeight="17.0" prefWidth="59.0" text="Player 2" />
-            <Label layoutX="62.0" layoutY="203.0" text="VS" />
-            <Label layoutX="70.0" layoutY="125.0" text="0" />
-            <Label layoutX="71.0" layoutY="378.0" text="2" />
+            <Label id="playersLabels" fx:id="usrplayer1" layoutX="45.0" layoutY="134.0" prefHeight="17.0" prefWidth="59.0" stylesheets="@MainCSS.css" text="Player 1" />
+            <Label id="playersLabels" fx:id="usrplayer2" layoutX="44.0" layoutY="297.0" prefHeight="17.0" prefWidth="59.0" text="Player 2" />
+            <Label id="playersLabels" layoutX="65.0" layoutY="218.0" stylesheets="@MainCSS.css" text="VS" />
+            <Label id="playersLabels" layoutX="70.0" layoutY="479.0" text="0" />
+            <Label id="playersLabels" layoutX="70.0" layoutY="568.0" text="2" />
+            <Label id="playersLabels" layoutX="72.0" layoutY="519.0" text=":" />
+            <Label id="playersLabels" layoutX="14.0" layoutY="437.0" prefHeight="17.0" prefWidth="50.0" text="Score:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label id="playersLabels" layoutX="14.0" layoutY="60.0" prefHeight="26.0" prefWidth="66.0" text="Players:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
