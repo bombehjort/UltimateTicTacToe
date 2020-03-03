@@ -54,6 +54,8 @@ public class IntroSceneController implements Initializable {
     @FXML
     private JFXTextField usernameHvB;
 
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -68,7 +70,9 @@ public class IntroSceneController implements Initializable {
         HvHPane.setVisible(true);
         HvBPane.setVisible(false);
         BvBPane.setVisible(false);
-
+        
+       
+        
     }
 
     @FXML
