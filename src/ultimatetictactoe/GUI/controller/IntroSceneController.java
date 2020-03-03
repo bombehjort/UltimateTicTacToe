@@ -71,6 +71,8 @@ public class IntroSceneController implements Initializable {
         HvBPane.setVisible(false);
         BvBPane.setVisible(false);
         
+        
+     
        
         
     }

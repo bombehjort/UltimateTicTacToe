@@ -8,14 +8,11 @@ package ultimatetictactoe.GUI.controller;
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.InvalidationListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,7 +26,6 @@ import ultimatetictactoe.GUI.UTTTButton;
 import ultimatetictactoe.game.GameManager;
 import ultimatetictactoe.game.GameState;
 import ultimatetictactoe.game.IGameState;
-import ultimatetictactoe.move.IMove;
 import ultimatetictactoe.move.Move;
 
 /**
@@ -56,27 +52,23 @@ public class MainController implements Initializable {
     private ImageView imageviewLeft;
     @FXML
     private ImageView imageviewRight;
-    
-    
-    
-    
-    
+
     private final GridPane[][] gridMicros = new GridPane[3][3];
-    private final Button[][] Button = new Button[9][9];
-    
+    private final Button[][] buttons = new Button[9][9];
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gameState = new GameState();
         gm = new GameManager(gameState);
         //createAllCells();
         gridMacro.toFront();
-         createMicroGridPanes();
-         
-        
+        createMicroGridPanes();
+
     }
-        int btnWidth = 65;
-        int btnHeight = 65;
-   /*
+    int btnWidth = 64;
+    int btnHeight = 64;
+
+    /*
         private void createAllCells() {
         int btnWidth = 65;
         int btnHeight = 65;
@@ -106,15 +98,15 @@ public class MainController implements Initializable {
                     }
                 });
 
-                gridMacro.getChildren().add(btn);
+                MainPane.getChildren().add(btn);
 
             }
 
         }
 
     } */
-    
-      private void createMicroGridPanes() {
+
+    private void createMicroGridPanes() {
         for (int i = 0; i < 3; i++) {
             gridMacro.addRow(i);
             for (int k = 0; k < 3; k++) {
@@ -132,7 +124,7 @@ public class MainController implements Initializable {
                     gp.getColumnConstraints().add(cc);
 
                     RowConstraints rc = new RowConstraints();
-                    rc.setVgrow(Priority.ALWAYS); // allow row to grow
+                    rc.setVgrow(Priority.ALWAYS); // allow row to grow always
                     rc.setFillHeight(true);
                     rc.setPercentHeight(33);
                     gp.getRowConstraints().add(rc);
@@ -147,60 +139,49 @@ public class MainController implements Initializable {
     }
 
     private void insertButtonsIntoGridPanes() {
-       
+
         for (int i = 0; i < 3; i++) {
             for (int k = 0; k < 3; k++) {
                 GridPane gp = gridMicros[i][k];
                 for (int x = 0; x < 3; x++) {
                     for (int y = 0; y < 3; y++) {
-                UTTTButton btn = new UTTTButton();
-                btn.setPrefSize(btnWidth, btnHeight);
-                btn.setMove(new Move(x, y));
+                        UTTTButton btn = new UTTTButton();
+                        btn.setPrefSize(btnWidth, btnHeight);
+                        btn.setMove(new Move(x, y));
 
-                int verticalSpaceBetween = 10 * (x / 3);
-                int horizontalSpaceBetween = 10 * (y / 3);
-                btn.setLayoutX(6 + (btnWidth + 2) * x + verticalSpaceBetween);
-                btn.setLayoutY(6 + (btnHeight + 2) * y + horizontalSpaceBetween);
-                        
-                        
-                        btn.setUserData(new Move(x + i * 3, y + k * 3));
+                        int verticalSpaceBetween = 10 * (x / 3);
+                        int horizontalSpaceBetween = 10 * (y / 3);
+                        btn.setLayoutX(6 + (btnWidth + 2) * x + verticalSpaceBetween);
+                        btn.setLayoutY(6 + (btnHeight + 2) * y + horizontalSpaceBetween);
+
+                        btn.setUserData(new Move(x+i*3, y+k*3));
                         btn.setFocusTraversable(false);
                         btn.setOnMouseClicked(
                                 event -> {
-                       
-                                 
-                    UTTTButton b = (UTTTButton) event.getSource();
-                    boolean isSucces = gm.updateGame(b.getMove());
-                    String imageSource;
-                    if (isSucces) {
-                        if (gameState.getMoveNumber() % 2 == 0) {
-                            imageSource = "/icons/player1icon.png";
-                        } else {
-                            imageSource = "/icons/player2icon.png";
-                        }
-                        b.setGraphic(new ImageView(new Image(imageSource)));
-                    }
-                });
+                                    
+                                    btn.getUserData();
+                                    UTTTButton b = (UTTTButton) event.getSource();
+                                    boolean isSucces = gm.updateGame(b.getMove());
+                                    String imageSource;
+                                    if (isSucces) {
+                                        if (gameState.getMoveNumber() % 2 == 0) {
+                                            imageSource = "/icons/player1icon.png";
+                                        } else {
+                                            imageSource = "/icons/player2icon.png";
+                                        }
+                                        b.setGraphic(new ImageView(new Image(imageSource)));
+                                    }
+                                });
                         gp.add(btn, x, y);
-                        Button[x + i * 3][y + k * 3] = btn;
+                        buttons[x + i * 3][y + k * 3] = btn;
+   
 
-                gridMacro.getChildren().add(btn);
-
-                    
                     }
                 }
             }
         }
-        
-        
-        
-       
-                
-            
-        
+
     }
-
-
 
     @FXML
     private void clickClose(ActionEvent event) {
@@ -218,5 +199,7 @@ public class MainController implements Initializable {
         }
 
     }
+
+    
 
 }
