@@ -68,10 +68,10 @@ public class Field implements IField{
 
     @Override
     public Boolean isInActiveMicroboard(int x, int y) {
-        int xTrans = x/3;
-        int yTrans = y/3;
-        String value = macroBoard[xTrans][yTrans];
-        return value.equals(AVAILABLE_FIELD);
+
+        String[][] macroBoard = getMacroboard();
+        boolean isInActiveMacroboardsMicroBoard = macroBoard[x][y].equals(IField.AVAILABLE_FIELD);
+        return isInActiveMacroboardsMicroBoard;
     }
 
     @Override

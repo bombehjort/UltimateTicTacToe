@@ -17,29 +17,29 @@ import ultimatetictactoe.move.Move;
  * @author mjl
  */
 public class GameManager {
-    
+
     public boolean checkForWinInMicroBoard() {
         return false;
     }
-    
+
     public int checkForWinInMacroBoard() {
         return -1;
     }
-    
+
     private void checkIfAlreadyWon(int macroX, int macroY, String[][] macroBoard) {
     }
-    
-    private void resetAllToAvailable(IMove mov , int macroX, int macroY, String[][] macroBoard) {
+
+    private void resetAllToAvailable(IMove mov, String[][] macroBoard) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                System.out.println(i +"" + j + "" +macroBoard[i][j].equals(IField.AVAILABLE_FIELD));
-                if (macroBoard[i][j].equals(IField.AVAILABLE_FIELD) ) {
+                System.out.println(i + "" + j + "" + macroBoard[i][j].equals(IField.AVAILABLE_FIELD));
+                if (macroBoard[i][j].equals(IField.AVAILABLE_FIELD)) {
                     macroBoard[i][j] = "0";
                 }
-                
+
             }
         }
-        macroBoard[macroX][macroY]=IField.AVAILABLE_FIELD;
+        macroBoard[mov.getX()][mov.getY()] = IField.AVAILABLE_FIELD;
     }
 
     /**
@@ -56,13 +56,8 @@ public class GameManager {
     private GameMode mode = GameMode.HumanVsHuman;
     private IBot bot = null;
     private IBot bot2 = null;
-    
-    
-    
-    
-    
-    public IGameState getCurrentState()
-    {
+
+    public IGameState getCurrentState() {
         return currentState;
     }
 
@@ -75,7 +70,7 @@ public class GameManager {
      */
     public GameManager(IGameState currentState) {
         this.currentState = currentState;
-        
+
         currentState.getField().clearBoard();
         mode = GameMode.HumanVsHuman;
     }
@@ -130,7 +125,7 @@ public class GameManager {
         //Update currentPlayer
         currentPlayer = (currentPlayer + 1) % 2;
         currentState.setMoveNumber(currentState.getMoveNumber() + 1);
-        
+
         return true;
     }
 
@@ -147,7 +142,7 @@ public class GameManager {
         if (mode == GameMode.HumanVsBot && currentPlayer == 1) {
             //Check bot is not equal to null, and throw an exception if it is.
             assert (bot != null);
-            
+
             IMove botMove = bot.doMove(currentState);
 
             //Be aware that your bots might perform illegal moves.
@@ -161,33 +156,32 @@ public class GameManager {
         //TODO: Implement a bot vs bot Update.
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     private Boolean verifyMoveLegality(IMove move, int macroX, int macroY) {
         //Test if the move is legal   
         //NOTE: should also check whether the move is placed on an occupied spot
-
         boolean isInActiveMacroboardsMicroBoard = currentState.getField().isInActiveMicroboard(macroX, macroY);
         //boolean hasAvailableMove = currentState.getField().getBoard()[move.getX()][move.getY()].equals(IField.EMPTY_FIELD);
-       
+
         return isInActiveMacroboardsMicroBoard;
     }
-    
+
     private void updateBoard(IMove move) {
         currentState.getField().getBoard()[move.getX()][move.getY()] = "" + currentPlayer;
     }
-    
+
     private void updateMacroboard(IMove move, int macroX, int macroY) {
-        
+
         String[][] macroBoard = currentState.getField().getMacroboard();
-        
+
         int microX = move.getX() % 3;
         int microY = move.getY() % 3;
-        
-        resetAllToAvailable(move,macroX, macroY, macroBoard);
+
+        resetAllToAvailable(move, macroBoard);
 
         //Checks if already won, if already won all macrocells available for play   
         checkIfAlreadyWon(macroX, macroY, macroBoard);
-        
+
     }
 
     /*    private boolean isTie(String[][] board, IMove move){
