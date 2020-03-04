@@ -24,6 +24,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import ultimatetictactoe.GUI.UTTTButton;
+import ultimatetictactoe.field.IField;
 import ultimatetictactoe.game.GameManager;
 import ultimatetictactoe.game.GameState;
 import ultimatetictactoe.game.IGameState;
@@ -62,6 +63,9 @@ public class MainController implements Initializable {
     private final String imagePathPlayer = "/icons/ninja.png";
     private final String imagePathPlayer2 = "/icons/blueman.png";
 
+    
+    MacroBoardModel model;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gameState = new GameState();
@@ -236,10 +240,32 @@ public class MainController implements Initializable {
                 usrplayer2.setText("Player 2");
             }
 
+
+            imageviewRight.setImage(usrImg);
+
             imageviewRight.setImage(usrImg2);
+
         }
         
 
     }
 
+    //Highlight Gridpane, but first we need to make the game work again
+    public void updateGUI() {
+
+        String[][] macroBoard = model.getMacroboard();
+        for (int i = 0; i < macroBoard.length; i++) {
+            for (int k = 0; k < macroBoard[i].length; k++) {
+                if (gridMicros[i][k] != null) {
+                    // Highlight available plays
+                    if (macroBoard[i][k].equals(IField.AVAILABLE_FIELD)) {
+                        gridMicros[i][k].getStyleClass().add("highlight");
+                    } else {
+                        gridMicros[i][k].getStyleClass().removeAll("highlight");
+                    }
+                }
+
+            }
+        }
+    }
 }
