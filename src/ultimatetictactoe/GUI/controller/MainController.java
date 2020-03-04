@@ -56,7 +56,10 @@ public class MainController implements Initializable {
     private final GridPane[][] gridMicros = new GridPane[3][3];
     private final Button[][] buttons = new Button[9][9];
     private final String imagePathBot = "/icons/robotsweet .png";
-    private final String imagePathPlayer = "/icons/player1icon.png";
+    private final String imagePathBot2 = "/icons/robotcute.png";
+
+    private final String imagePathPlayer = "/icons/ninja.png";
+    private final String imagePathPlayer2 = "/icons/blueman.png";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -166,9 +169,9 @@ public class MainController implements Initializable {
                                     String imageSource;
                                     if (isSucces) {
                                         if (gameState.getMoveNumber() % 2 == 0) {
-                                            imageSource = "/icons/player2icon.png";
+                                            imageSource = "/icons/ninja.png";
                                         } else {
-                                            imageSource = "/icons/player1icon.png";
+                                            imageSource = "/icons/blueman.png";
                                         }
                                         b.setGraphic(new ImageView(new Image(imageSource)));
                                     }
@@ -192,26 +195,32 @@ public class MainController implements Initializable {
 
     public void setUpUsernames(String firstName, String secondName) {
         Image botImg = new Image(this.getClass().getResource(imagePathBot).toExternalForm());
+        Image botImg2 = new Image(this.getClass().getResource(imagePathBot2).toExternalForm());
+        Image usrImg2 = new Image(this.getClass().getResource(imagePathPlayer2).toExternalForm());
+
         Image usrImg = new Image(this.getClass().getResource(imagePathPlayer).toExternalForm());
-        imageviewLeft.setImage(botImg);
+        imageviewLeft.setImage(botImg2);
         imageviewRight.setImage(botImg);
-        
-        if (firstName!=null) {
+
+        if (firstName != null) {
             usrplayer1.setText(firstName);
-            
-            if(firstName.trim().equals(""))
+
+            if (firstName.trim().equals("")) {
                 usrplayer1.setText("Player 1");
-            
+            }
+
             imageviewLeft.setImage(usrImg);
         }
-        if (secondName!=null) {
+        if (secondName != null) {
             usrplayer2.setText(secondName);
-            
-            if(secondName.trim().equals(""))
+
+            if (secondName.trim().equals("")) {
                 usrplayer2.setText("Player 2");
-            
-            imageviewRight.setImage(usrImg);
+            }
+
+            imageviewRight.setImage(usrImg2);
         }
+        
 
     }
 

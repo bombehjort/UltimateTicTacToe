@@ -174,5 +174,68 @@ public class GameManager {
             currentState.getField().getMacroboard()[macroX][macroY] = IField.AVAILABLE_FIELD;
 
         }
+    
+    
+    
+     private boolean isTie(String[][] board, IMove move){
+        int localX = move.getX() % 3;
+        int localY = move.getY() % 3;
+        int startX = move.getX() - (localX);
+        int startY = move.getY() - (localY);
+
+        for (int i = startX; i < startX+3; i++) {
+            for (int k = startY; k < startY+3; k++) {
+                if(board[i][k].equals(IField.AVAILABLE_FIELD) ||
+                        board[i][k].equals(IField.EMPTY_FIELD) )
+                    return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static boolean isWin(String[][] board, IMove move, String currentPlayer){
+        int localX = move.getX() % 3;
+        int localY = move.getY() % 3;
+        int startX = move.getX() - (localX);
+        int startY = move.getY() - (localY);
+
+        //check col
+        for (int i = startY; i < startY + 3; i++) {
+            if (!board[move.getX()][i].equals(currentPlayer))
+                break;
+            if (i == startY + 3 - 1) return true;
+        }
+
+        //check row
+        for (int i = startX; i < startX + 3; i++) {
+            if (!board[i][move.getY()].equals(currentPlayer))
+                break;
+            if (i == startX + 3 - 1) return true;
+        }
+
+        //check diagonal
+        if (localX == localY) {
+            //we're on a diagonal
+            int y = startY;
+            for (int i = startX; i < startX + 3; i++) {
+                if (!board[i][y++].equals(currentPlayer))
+                    break;
+                if (i == startX + 3 - 1) return true;
+            }
+        }
+
+        //check anti diagonal
+        if (localX + localY == 3 - 1) {
+            int less = 0;
+            for (int i = startX; i < startX + 3; i++) {
+                if (!board[i][(startY + 2)-less++].equals(currentPlayer))
+                    break;
+                if (i == startX + 3 - 1) return true;
+            }
+        }
+        return false;
+    }
+    
     }
         

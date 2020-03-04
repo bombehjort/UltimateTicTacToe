@@ -130,7 +130,9 @@ public class IntroSceneController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ultimatetictactoe/GUI/view/MainView.fxml"));
         Parent root = loader.load();
         MainController mctrl = loader.getController();
-mctrl.setUpUsernames(null, null);
+        
+        mctrl.setUpUsernames(null, null);
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
