@@ -152,8 +152,8 @@ public class MainController implements Initializable {
 
                         int verticalSpaceBetween = 10 * (x / 3);
                         int horizontalSpaceBetween = 10 * (y / 3);
-                        btn.setLayoutX(6 + (btnWidth + 2) * x + verticalSpaceBetween);
-                        btn.setLayoutY(6 + (btnHeight + 2) * y + horizontalSpaceBetween);
+                        btn.setLayoutX(6 + (btnWidth + 1) * x + verticalSpaceBetween);
+                        btn.setLayoutY(6 + (btnHeight + 1) * y + horizontalSpaceBetween);
 
                         btn.setUserData(new Move(x + i * 3, y + k * 3));
                         btn.setFocusTraversable(false);
