@@ -30,6 +30,15 @@ public class GameManager {
     private GameMode mode = GameMode.HumanVsHuman;
     private IBot bot = null;
     private IBot bot2 = null;
+    
+    
+    
+    
+    
+    public IGameState getCurrentState()
+    {
+        return currentState;
+    }
 
     /**
      * Set's the currentState so the game can begin. Game expected to be played

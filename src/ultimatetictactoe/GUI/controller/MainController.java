@@ -23,6 +23,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import ultimatetictactoe.GUI.UTTTButton;
+import ultimatetictactoe.field.IField;
 import ultimatetictactoe.game.GameManager;
 import ultimatetictactoe.game.GameState;
 import ultimatetictactoe.game.IGameState;
@@ -58,6 +59,9 @@ public class MainController implements Initializable {
     private final String imagePathBot = "/icons/robotsweet .png";
     private final String imagePathPlayer = "/icons/player1icon.png";
 
+    
+    MacroBoardModel model;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gameState = new GameState();
@@ -195,24 +199,44 @@ public class MainController implements Initializable {
         Image usrImg = new Image(this.getClass().getResource(imagePathPlayer).toExternalForm());
         imageviewLeft.setImage(botImg);
         imageviewRight.setImage(botImg);
-        
-        if (firstName!=null) {
+
+        if (firstName != null) {
             usrplayer1.setText(firstName);
-            
-            if(firstName.trim().equals(""))
+
+            if (firstName.trim().equals("")) {
                 usrplayer1.setText("Player 1");
-            
+            }
+
             imageviewLeft.setImage(usrImg);
         }
-        if (secondName!=null) {
+        if (secondName != null) {
             usrplayer2.setText(secondName);
-            
-            if(secondName.trim().equals(""))
+
+            if (secondName.trim().equals("")) {
                 usrplayer2.setText("Player 2");
-            
+            }
+
             imageviewRight.setImage(usrImg);
         }
 
     }
 
+    //Highlight Gridpane, but first we need to make the game work again
+    public void updateGUI() {
+
+        String[][] macroBoard = model.getMacroboard();
+        for (int i = 0; i < macroBoard.length; i++) {
+            for (int k = 0; k < macroBoard[i].length; k++) {
+                if (gridMicros[i][k] != null) {
+                    // Highlight available plays
+                    if (macroBoard[i][k].equals(IField.AVAILABLE_FIELD)) {
+                        gridMicros[i][k].getStyleClass().add("highlight");
+                    } else {
+                        gridMicros[i][k].getStyleClass().removeAll("highlight");
+                    }
+                }
+
+            }
+        }
+    }
 }
