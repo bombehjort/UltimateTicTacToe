@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ultimatetictactoe.field;
 
 import java.util.ArrayList;
@@ -10,60 +5,41 @@ import java.util.List;
 import ultimatetictactoe.move.IMove;
 import ultimatetictactoe.move.Move;
 
-/**
- *
- * @author Martin Park Broderse
- */
-public class Field implements IField {
+public class Field implements IField{
 
-    String[][] macroBoard; //3x3
-    String[][] board; //9x9
+    volatile String[][] board = new String[9][9];
+    volatile String[][] macroBoard = new String[3][3];
 
     public Field() {
-        macroBoard = new String[3][3];
-        board = new String[9][9];
         clearBoard();
-
     }
 
     @Override
     public void clearBoard() {
-        for (int x = 0; x < macroBoard.length; x++) {
-
-            for (int y = 0; y < macroBoard[x].length; y++) {
-                macroBoard[x][y] = AVAILABLE_FIELD;
-
+        board = new String[9][9];
+        for (int i = 0; i < board.length; i++)
+            for (int k = 0; k < board[i].length; k++) {
+                board[i][k] = EMPTY_FIELD;
             }
-        }
-        for (int x = 0; x < board.length; x++) {
-
-            for (int y = 0; y < board[x].length; y++) {
-                board[x][y] = EMPTY_FIELD;
-
+        for (int i = 0; i < macroBoard.length; i++)
+            for (int k = 0; k < macroBoard[i].length; k++) {
+                macroBoard[i][k] = AVAILABLE_FIELD;
             }
-        }
-
     }
 
     @Override
     public List<IMove> getAvailableMoves() {
-        List<IMove> moveList = new ArrayList<>();
-        for (int x = 0; x < board.length; x++) {
+        List<IMove> availMoves = new ArrayList<>();
 
-            for (int y = 0; y < board[x].length; y++) {
-                boolean isEmpty = board[x][y] == EMPTY_FIELD;
-                if (isEmpty && isInActiveMicroboard(x, y)) {
-                    moveList.add(new Move(x, y));
-
+        for (int i = 0; i < board.length; i++)
+            for (int k = 0; k < board[i].length; k++) {
+                if(isInActiveMicroboard(i,k) && board[i][k].equals(EMPTY_FIELD)) {
+                    availMoves.add(new Move(i,k));
                 }
-
-            }
         }
 
-        return moveList;
-
+        return availMoves;
     }
-    // if(!isInActiveMicroboard(0, 0))
 
     @Override
     public String getPlayerId(int column, int row) {
@@ -72,40 +48,30 @@ public class Field implements IField {
 
     @Override
     public boolean isEmpty() {
-        for (int x = 0; x < macroBoard.length; x++) {
-
-            for (int y = 0; y < macroBoard[x].length; y++) {
-                if (!board[x][y].equals(EMPTY_FIELD)) {
+        for (int i = 0; i < board.length; i++)
+            for (int k = 0; k < board[i].length; k++) {
+                if(board[i][k]!=EMPTY_FIELD && board[i][k]!=AVAILABLE_FIELD)
                     return false;
-                }
-
             }
-        }
         return true;
     }
 
     @Override
     public boolean isFull() {
-        for (int x = 0; x < macroBoard.length; x++) {
-
-            for (int y = 0; y < macroBoard[x].length; y++) {
-                if (board[x][y].equals(EMPTY_FIELD)) {
+        for (int i = 0; i < board.length; i++)
+            for (int k = 0; k < board[i].length; k++) {
+                if(board[i][k]==EMPTY_FIELD || board[i][k]==AVAILABLE_FIELD)
                     return false;
-                }
-
             }
-        }
         return true;
     }
 
     @Override
     public Boolean isInActiveMicroboard(int x, int y) {
-
-        int macroX = x / 3;
-        int macroY = y / 3;
-
-        return macroBoard[macroX][macroY].equals(AVAILABLE_FIELD);
-
+        int xTrans = x/3;
+        int yTrans = y/3;
+        String value = macroBoard[xTrans][yTrans];
+        return value.equals(AVAILABLE_FIELD);
     }
 
     @Override
@@ -119,13 +85,24 @@ public class Field implements IField {
     }
 
     @Override
-    public void setBoard(String[][] board) {
-        this.board = board;
+    public void setBoard(String[][] board)
+    {
+        //NOTE: Cloning here, for simulation purposes
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                this.board[i][j] = board[i][j];
+            }
+        }
     }
 
     @Override
-    public void setMacroboard(String[][] macroboard) {
-        this.macroBoard = macroboard;
+    public void setMacroboard(String[][] macroboard)
+    {
+        //NOTE: Cloning here, for simulation purposes
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                this.macroBoard[i][j] = macroboard[i][j];
+            }
+        }
     }
-
 }

@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -165,7 +166,10 @@ public class MainController implements Initializable {
 
                                     btn.getUserData();
                                     UTTTButton b = (UTTTButton) event.getSource();
-                                    boolean isSucces = gm.updateGame(b.getMove());
+                                      Node sourcer  = (Node) b.getParent();
+                                            Integer colIndex = GridPane.getColumnIndex(sourcer);
+        Integer rowIndex = GridPane.getRowIndex(sourcer);
+                                    boolean isSucces = gm.updateGame(b.getMove(),colIndex.intValue(),rowIndex.intValue());
                                     String imageSource;
                                     if (isSucces) {
                                         if (gameState.getMoveNumber() % 2 == 0) {
@@ -174,20 +178,34 @@ public class MainController implements Initializable {
                                             imageSource = "/icons/blueman.png";
                                         }
                                         b.setGraphic(new ImageView(new Image(imageSource)));
+                                        // Disable button
+                                        b.setDisable(true);
+                                        // check if won
+                                        boolean isMicroWon = gm.checkForWinInMicroBoard();
+                                        if (isMicroWon) {
+                                            //Disable MicroBoard Moves
+                                        }
+                                        int whoWon = gm.checkForWinInMacroBoard(); // -1 game is not won. Lets fucking go.
+                                        if (whoWon == 0) {// Tie
+                                        } else if (whoWon == 1) { // Player 1 wins
+                                        } else if (whoWon == 2) { //Player 2 wins
+                                        
                                     }
-                                });
-                        gp.add(btn, x, y);
-                        buttons[x + i * 3][y + k * 3] = btn;
+                                
+                                }
+                    });
+                    gp.add(btn, x, y);
+                    buttons[x + i * 3][y + k * 3] = btn;
 
-                    }
                 }
             }
         }
-
     }
 
-    @FXML
-    private void clickClose(ActionEvent event) {
+}
+
+@FXML
+        private void clickClose(ActionEvent event) {
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
 

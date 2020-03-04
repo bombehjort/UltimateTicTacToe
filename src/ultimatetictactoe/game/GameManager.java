@@ -2,7 +2,9 @@ package ultimatetictactoe.game;
 
 import ultimatetictactoe.bot.IBot;
 import ultimatetictactoe.field.IField;
+import static ultimatetictactoe.field.IField.EMPTY_FIELD;
 import ultimatetictactoe.move.IMove;
+import ultimatetictactoe.move.Move;
 
 /**
  * This is a proposed GameManager for Ultimate Tic-Tac-Toe, the implementation
@@ -15,6 +17,30 @@ import ultimatetictactoe.move.IMove;
  * @author mjl
  */
 public class GameManager {
+    
+    public boolean checkForWinInMicroBoard() {
+        return false;
+    }
+    
+    public int checkForWinInMacroBoard() {
+        return -1;
+    }
+    
+    private void checkIfAlreadyWon(int macroX, int macroY, String[][] macroBoard) {
+    }
+    
+    private void resetAllToAvailable(IMove mov , int macroX, int macroY, String[][] macroBoard) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.println(i +"" + j + "" +macroBoard[i][j].equals(IField.AVAILABLE_FIELD));
+                if (macroBoard[i][j].equals(IField.AVAILABLE_FIELD) ) {
+                    macroBoard[i][j] = "0";
+                }
+                
+            }
+        }
+        macroBoard[macroX][macroY]=IField.AVAILABLE_FIELD;
+    }
 
     /**
      * Three different game modes.
@@ -40,6 +66,8 @@ public class GameManager {
      */
     public GameManager(IGameState currentState) {
         this.currentState = currentState;
+        
+        currentState.getField().clearBoard();
         mode = GameMode.HumanVsHuman;
     }
 
@@ -53,6 +81,7 @@ public class GameManager {
      */
     public GameManager(IGameState currentState, IBot bot) {
         this.currentState = currentState;
+        currentState.getField().clearBoard();
         mode = GameMode.HumanVsBot;
         this.bot = bot;
     }
@@ -79,20 +108,19 @@ public class GameManager {
      * @param move The next user move
      * @return Returns true if the update was successful, false otherwise.
      */
-    public Boolean updateGame(IMove move) {
+    public Boolean updateGame(IMove move, Integer moveX, Integer moveY) {
         //Verify the new move
-        if (!verifyMoveLegality(move)) {
+        if (!verifyMoveLegality(move, moveX, moveY)) {
+            System.out.println("Move is not move");
             return false;
         }
-
         //Update the currentState
         updateBoard(move);
-        updateMacroboard(move);
+        updateMacroboard(move, moveX, moveY);
 
         //Update currentPlayer
         currentPlayer = (currentPlayer + 1) % 2;
-        currentState.setMoveNumber(currentState.getMoveNumber()+1);
-        
+        currentState.setMoveNumber(currentState.getMoveNumber() + 1);
         
         return true;
     }
@@ -110,11 +138,11 @@ public class GameManager {
         if (mode == GameMode.HumanVsBot && currentPlayer == 1) {
             //Check bot is not equal to null, and throw an exception if it is.
             assert (bot != null);
-
+            
             IMove botMove = bot.doMove(currentState);
 
             //Be aware that your bots might perform illegal moves.
-            return updateGame(botMove);
+            return updateGame(botMove, botMove.getX(), botMove.getY());
         }
 
         //Check bot is not equal to null, and throw an exception if it is.
@@ -124,60 +152,36 @@ public class GameManager {
         //TODO: Implement a bot vs bot Update.
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    private Boolean verifyMoveLegality(IMove move) {
+    
+    private Boolean verifyMoveLegality(IMove move, int macroX, int macroY) {
         //Test if the move is legal   
-        //NOTE: should also check whether the move is placed on an occupied spot.
-        
-        boolean isInActiveMicroBoard = currentState.getField().isInActiveMicroboard(move.getX(), move.getY());
-        boolean isAvailable = currentState.getField().getPlayerId(move.getX(), move.getY()).equals(IField.EMPTY_FIELD);
-        return isInActiveMicroBoard && isAvailable;
-        }
+        //NOTE: should also check whether the move is placed on an occupied spot
 
+        boolean isInActiveMacroboardsMicroBoard = currentState.getField().isInActiveMicroboard(macroX, macroY);
+        //boolean hasAvailableMove = currentState.getField().getBoard()[move.getX()][move.getY()].equals(IField.EMPTY_FIELD);
+       
+        return isInActiveMacroboardsMicroBoard;
+    }
+    
     private void updateBoard(IMove move) {
         currentState.getField().getBoard()[move.getX()][move.getY()] = "" + currentPlayer;
+    }
+    
+    private void updateMacroboard(IMove move, int macroX, int macroY) {
+        
+        String[][] macroBoard = currentState.getField().getMacroboard();
+        
+        int microX = move.getX() % 3;
+        int microY = move.getY() % 3;
+        
+        resetAllToAvailable(move,macroX, macroY, macroBoard);
 
+        //Checks if already won, if already won all macrocells available for play   
+        checkIfAlreadyWon(macroX, macroY, macroBoard);
+        
     }
 
-    private void updateMacroboard(IMove move) {
-        int macroX = move.getX() % 3;
-        int macroY = move.getY() % 3;
-        String[][] macroBoard = currentState.getField().getMacroboard();
-
-     //Checks if already won, if already won all macrocells available for play   
-        
-        
-        if (currentState.getField().getMacroboard()[macroX][macroY] != IField.AVAILABLE_FIELD
-                && currentState.getField().getMacroboard()[macroX][macroY] != NON_AVAILABLE_MACRO_CELL) {
-
-            for (int x = 0; x < macroBoard.length; x++) {
-                for (int y = 0; y < macroBoard[x].length; y++) {
-                    if (currentState.getField().getMacroboard()[x][y] == NON_AVAILABLE_MACRO_CELL) {
-                        macroBoard[x][y]= IField.AVAILABLE_FIELD; 
-                            
-                        }
-                    }
-                }
-            }
-        
-        
-        //if non already won, set all to nonavailable and set only clicked to avaliable. 
-          if(currentState.getField().getMacroboard()[macroX][macroY] == NON_AVAILABLE_MACRO_CELL||
-                  currentState.getField().getMacroboard()[macroX][macroY] == IField.AVAILABLE_FIELD)
-            for (int x = 0; x < macroBoard.length; x++) {
-                for (int y = 0; y < macroBoard[x].length; y++) {
-                    if (macroBoard[x][y] == IField.AVAILABLE_FIELD) {
-                        macroBoard[x][y] = NON_AVAILABLE_MACRO_CELL; //making unavailable
-                    }
-                }
-            }
-            currentState.getField().getMacroboard()[macroX][macroY] = IField.AVAILABLE_FIELD;
-
-        }
-    
-    
-    
-     private boolean isTie(String[][] board, IMove move){
+    /*    private boolean isTie(String[][] board, IMove move){
         int localX = move.getX() % 3;
         int localY = move.getY() % 3;
         int startX = move.getX() - (localX);
@@ -235,7 +239,5 @@ public class GameManager {
             }
         }
         return false;
-    }
-    
-    }
-        
+    }*/
+}

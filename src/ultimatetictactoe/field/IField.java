@@ -2,6 +2,7 @@ package ultimatetictactoe.field;
 
 import java.util.List;
 import ultimatetictactoe.move.IMove;
+import ultimatetictactoe.move.Move;
 
 /**
  *
@@ -35,7 +36,7 @@ public interface IField {
     boolean isEmpty();
 
     /**
-     * Checks whether the field is full
+     * Checks whether field is full
      * @return Returns true when field is full, otherwise returns false.
      */
     boolean isFull();
