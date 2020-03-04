@@ -55,8 +55,8 @@ public class MainController implements Initializable {
 
     private final GridPane[][] gridMicros = new GridPane[3][3];
     private final Button[][] buttons = new Button[9][9];
-    private final String imagePathBot = "/icons/robotsweet.png";
-    private final String imagePathPlayer = "/src/icons/player1icon.png";
+    private final String imagePathBot = "/icons/robotsweet .png";
+    private final String imagePathPlayer = "/icons/player1icon.png";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
