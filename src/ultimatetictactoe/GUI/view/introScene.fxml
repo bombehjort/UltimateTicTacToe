@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.IntroSceneController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ultimatetictactoe.GUI.controller.IntroSceneController">
    <children>
       <Label id="IntroLabel" layoutX="155.0" layoutY="21.0" stylesheets="@IntroCSS.css" text="ULTIMATE TIC TAC TOE" AnchorPane.topAnchor="21.0">
          <font>
@@ -54,7 +54,7 @@
             <JFXButton fx:id="confirmbtnHvB" buttonType="RAISED" layoutX="406.0" layoutY="152.0" onAction="#clickConfirmHvB" ripplerFill="WHITE" style="-fx-border-color: black; -fx-border-width: 3;" text="Confirm" />
             <ImageView fitHeight="97.0" fitWidth="131.0" layoutX="175.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../icons/hibot.png" />
+                  <Image url="@../../../icons/robotsweet%20.png" />
                </image>
             </ImageView>
          </children>
@@ -66,12 +66,12 @@
             <JFXButton fx:id="confirmbtnbvb" buttonType="RAISED" layoutX="406.0" layoutY="152.0" onAction="#clickConfirmBvB" ripplerFill="WHITE" style="-fx-border-color: black; -fx-border-width: 3;" text="Confirm" />
             <ImageView fitHeight="87.0" fitWidth="120.0" layoutX="191.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../icons/minionbot.png" />
+                  <Image url="@../../../icons/robotsweet%20.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="87.0" fitWidth="120.0" layoutX="191.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../icons/alienbot.png" />
+                  <Image url="@../../../icons/robotsweet%20.png" />
                </image>
             </ImageView>
          </children>

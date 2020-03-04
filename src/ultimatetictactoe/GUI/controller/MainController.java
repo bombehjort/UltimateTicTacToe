@@ -55,6 +55,8 @@ public class MainController implements Initializable {
 
     private final GridPane[][] gridMicros = new GridPane[3][3];
     private final Button[][] buttons = new Button[9][9];
+    private final String imagePathBot = "/icons/robotsweet.png";
+    private final String imagePathPlayer = "/src/icons/player1icon.png";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -105,7 +107,6 @@ public class MainController implements Initializable {
         }
 
     } */
-
     private void createMicroGridPanes() {
         for (int i = 0; i < 3; i++) {
             gridMacro.addRow(i);
@@ -154,27 +155,26 @@ public class MainController implements Initializable {
                         btn.setLayoutX(6 + (btnWidth + 2) * x + verticalSpaceBetween);
                         btn.setLayoutY(6 + (btnHeight + 2) * y + horizontalSpaceBetween);
 
-                        btn.setUserData(new Move(x+i*3, y+k*3));
+                        btn.setUserData(new Move(x + i * 3, y + k * 3));
                         btn.setFocusTraversable(false);
                         btn.setOnMouseClicked(
                                 event -> {
-                                    
+
                                     btn.getUserData();
                                     UTTTButton b = (UTTTButton) event.getSource();
                                     boolean isSucces = gm.updateGame(b.getMove());
                                     String imageSource;
                                     if (isSucces) {
                                         if (gameState.getMoveNumber() % 2 == 0) {
-                                            imageSource = "/icons/player1icon.png";
-                                        } else {
                                             imageSource = "/icons/player2icon.png";
+                                        } else {
+                                            imageSource = "/icons/player1icon.png";
                                         }
                                         b.setGraphic(new ImageView(new Image(imageSource)));
                                     }
                                 });
                         gp.add(btn, x, y);
                         buttons[x + i * 3][y + k * 3] = btn;
-   
 
                     }
                 }
@@ -190,16 +190,29 @@ public class MainController implements Initializable {
 
     }
 
-    void setUpUsernames(String firstName, String secondName) {
-        if (!firstName.equals("")) {
+    public void setUpUsernames(String firstName, String secondName) {
+        Image botImg = new Image(this.getClass().getResource(imagePathBot).toExternalForm());
+        Image usrImg = new Image(this.getClass().getResource(imagePathPlayer).toExternalForm());
+        imageviewLeft.setImage(botImg);
+        imageviewRight.setImage(botImg);
+        
+        if (firstName!=null) {
             usrplayer1.setText(firstName);
+            
+            if(firstName.trim().equals(""))
+                usrplayer1.setText("Player 1");
+            
+            imageviewLeft.setImage(usrImg);
         }
-        if (!secondName.equals("")) {
+        if (secondName!=null) {
             usrplayer2.setText(secondName);
+            
+            if(secondName.trim().equals(""))
+                usrplayer2.setText("Player 2");
+            
+            imageviewRight.setImage(usrImg);
         }
 
     }
-
-    
 
 }

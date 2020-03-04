@@ -12,8 +12,8 @@ import ultimatetictactoe.move.IMove;
  *
  * @author Martin Park Broderse
  */
-public class UTTTButton extends Button{
-    
+public class UTTTButton extends Button {
+
     private IMove move;
 
     public IMove getMove() {
