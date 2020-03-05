@@ -6,6 +6,7 @@
 package ultimatetictactoe.GUI.controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 import ultimatetictactoe.GUI.UTTTButton;
 import ultimatetictactoe.field.IField;
@@ -58,10 +60,10 @@ public class MainController implements Initializable {
     private final GridPane[][] gridMicros = new GridPane[3][3];
     private final Button[][] buttons = new Button[9][9];
     private final String imagePathBot = "/icons/robotsweet .png";
-    private final String imagePathBot2 = "/icons/robotcute.png";
+    private final String imagePathBot2 = "/icons/littlerobot.png";
 
-    private final String imagePathPlayer = "/icons/ninja.png";
-    private final String imagePathPlayer2 = "/icons/blueman.png";
+    private final String imagePathPlayer = "/icons/ninja2.png";
+    private final String imagePathPlayer2 = "/icons/bomb.png";
 
     
     MacroBoardModel model;
@@ -177,9 +179,11 @@ public class MainController implements Initializable {
                                     String imageSource;
                                     if (isSucces) {
                                         if (gameState.getMoveNumber() % 2 == 0) {
+                                           
                                             imageSource = "/icons/ninja.png";
+                                         
                                         } else {
-                                            imageSource = "/icons/blueman.png";
+                                            imageSource = "/icons/bomb1.png";
                                         }
                                         b.setGraphic(new ImageView(new Image(imageSource)));
                                         // Disable button
