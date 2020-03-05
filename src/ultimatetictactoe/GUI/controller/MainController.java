@@ -6,7 +6,6 @@
 package ultimatetictactoe.GUI.controller;
 
 import com.jfoenix.controls.JFXButton;
-import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,10 +22,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 import ultimatetictactoe.GUI.UTTTButton;
-import ultimatetictactoe.field.IField;
 import ultimatetictactoe.game.GameManager;
 import ultimatetictactoe.game.GameState;
 import ultimatetictactoe.game.IGameState;
@@ -72,7 +69,6 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         gameState = new GameState();
         gm = new GameManager(gameState);
-        //createAllCells();
         gridMacro.toFront();
         createMicroGridPanes();
 
@@ -80,43 +76,7 @@ public class MainController implements Initializable {
     int btnWidth = 64;
     int btnHeight = 64;
 
-    /*
-        private void createAllCells() {
-        int btnWidth = 65;
-        int btnHeight = 65;
 
-        for (int x = 0; x < 3 + 3 + 3; x++) {
-            for (int y = 0; y < 3 + 3 + 3; y++) {
-                UTTTButton btn = new UTTTButton();
-                btn.setPrefSize(btnWidth, btnHeight);
-                btn.setMove(new Move(x, y));
-
-                int verticalSpaceBetween = 10 * (x / 3);
-                int horizontalSpaceBetween = 10 * (y / 3);
-                btn.setLayoutX(6 + (btnWidth + 2) * x + verticalSpaceBetween);
-                btn.setLayoutY(6 + (btnHeight + 2) * y + horizontalSpaceBetween);
-
-                btn.setOnMouseClicked(event -> {
-                    UTTTButton b = (UTTTButton) event.getSource();
-                    boolean isSucces = gm.updateGame(b.getMove());
-                    String imageSource;
-                    if (isSucces) {
-                        if (gameState.getMoveNumber() % 2 == 0) {
-                            imageSource = "/icons/player1icon.png";
-                        } else {
-                            imageSource = "/icons/player2icon.png";
-                        }
-                        b.setGraphic(new ImageView(new Image(imageSource)));
-                    }
-                });
-
-                MainPane.getChildren().add(btn);
-
-            }
-
-        }
-
-    } */
     private void createMicroGridPanes() {
         for (int i = 0; i < 3; i++) {
             gridMacro.addRow(i);
@@ -184,7 +144,9 @@ public class MainController implements Initializable {
                                          
                                         } else {
                                             imageSource = "/icons/bomb1.png";
-                                        }
+                                        
+                                                }
+                                        
                                         b.setGraphic(new ImageView(new Image(imageSource)));
                                         // Disable button
                                         b.setDisable(true);
@@ -254,22 +216,4 @@ public class MainController implements Initializable {
 
     }
 
-    //Highlight Gridpane, but first we need to make the game work again
-    public void updateGUI() {
-
-        String[][] macroBoard = model.getMacroboard();
-        for (int i = 0; i < macroBoard.length; i++) {
-            for (int k = 0; k < macroBoard[i].length; k++) {
-                if (gridMicros[i][k] != null) {
-                    // Highlight available plays
-                    if (macroBoard[i][k].equals(IField.AVAILABLE_FIELD)) {
-                        gridMicros[i][k].getStyleClass().add("highlight");
-                    } else {
-                        gridMicros[i][k].getStyleClass().removeAll("highlight");
-                    }
-                }
-
-            }
-        }
-    }
 }
