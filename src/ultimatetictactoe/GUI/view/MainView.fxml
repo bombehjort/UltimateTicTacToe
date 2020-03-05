@@ -34,8 +34,8 @@
       <JFXButton buttonType="RAISED" layoutX="7.0" layoutY="8.0" text="Refresh Game" />
       <Pane fx:id="miniPane" layoutX="747.0" layoutY="85.0" prefHeight="628.0" prefWidth="148.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
          <children>
-            <Label id="playersLabels" fx:id="usrplayer1" layoutX="45.0" layoutY="134.0" prefHeight="17.0" prefWidth="59.0" stylesheets="@MainCSS.css" text="Player 1" />
-            <Label id="playersLabels" fx:id="usrplayer2" layoutX="44.0" layoutY="297.0" prefHeight="17.0" prefWidth="59.0" text="Player 2" />
+            <Label id="playersLabels1" fx:id="usrplayer1" layoutX="45.0" layoutY="134.0" prefHeight="17.0" prefWidth="59.0" stylesheets="@MainCSS.css" text="Player 1" />
+            <Label id="playersLabels1" fx:id="usrplayer2" layoutX="44.0" layoutY="297.0" prefHeight="17.0" prefWidth="59.0" text="Player 2" />
             <Label id="playersLabels" layoutX="65.0" layoutY="218.0" stylesheets="@MainCSS.css" text="VS" />
             <Label id="playersLabels" layoutX="70.0" layoutY="479.0" text="0" />
             <Label id="playersLabels" layoutX="70.0" layoutY="568.0" text="2" />

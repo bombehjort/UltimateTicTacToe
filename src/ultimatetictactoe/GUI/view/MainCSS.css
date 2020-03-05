@@ -43,6 +43,18 @@ and open the template in the editor.
 
 #playersLabels{
     
-    -fx-font-family: 'Trade Winds';
+    -fx-font-family: 'Comic Sans';
+   
+-fx-font-weight: bold;
+-fx-display: block;
+-fx-width: 150px;
+-fx-float: left;
     
 }
+#playersLabels1{
+    -fx-font-family: 'Comic Sans';
+ -fx-border-style: solid;  
+ -fx-border-color: lightpink;
+    -fx-border-width: 3px;
+}
+
